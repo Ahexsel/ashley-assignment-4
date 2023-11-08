@@ -43,6 +43,10 @@ public class ReadCSVFile {
 	
 	public void writeStudentsData(List<Student> students, String outputFileName) throws IOException {
 	    try (BufferedWriter writer = new BufferedWriter(new FileWriter(outputFileName))) {
+	    	String header = "Student ID,Student Name,Course,Grade";
+	    	writer.write(header);
+	    	writer.newLine();	    	
+	    			
 	        for (Student student : students) {
 	            if (student != null) {
 	                String line = student.getStudentId() + "," + student.getStudentName() + "," +
@@ -62,7 +66,7 @@ public class ReadCSVFile {
 		Student[] students = reader.readStudentsData();
 		
 		//This will sort the students in descending order based on their course names.
-		Arrays.sort(students, (s1, s2) -> s1.getCourse().compareTo(s2.getCourse()));
+		Arrays.sort(students, (s1, s2) -> s1.getGrade().compareTo(s2.getGrade()));
 		
 		List<Student> course1Students = new ArrayList<>();
 	    List<Student> course2Students = new ArrayList<>();
