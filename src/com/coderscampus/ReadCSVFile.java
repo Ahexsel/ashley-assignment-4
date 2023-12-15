@@ -65,14 +65,7 @@ public class ReadCSVFile {
 		ReadCSVFile reader = new ReadCSVFile();
 		Student[] students = reader.readStudentsData();
 		
-		// Sorting by course and then by grade within each course
-        Arrays.sort(students, (s1, s2) -> {
-            int result = s1.getCourse().compareTo(s2.getCourse());
-            if (result == 0) {
-                result = Integer.compare(s2.getGrade(), s1.getGrade()); // Reversed order for descending grade
-            }
-            return result;
-        });
+		Arrays.sort(students, (s1, s2) -> s1.getGrade().compareTo(s2.getGrade()));
 		
 		List<Student> course1Students = new ArrayList<>();
 	    List<Student> course2Students = new ArrayList<>();
